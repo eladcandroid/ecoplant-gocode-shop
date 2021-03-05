@@ -1,9 +1,14 @@
-import React, { useEffect, useState, useContext } from "react";
-import ThemeContext from "../ThemeContext";
+import React, { useEffect, useState } from "react";
+import { useStores } from "../hooks/use-stores";
+import { observer } from "mobx-react";
 
-function Counter({ color, setGlobalCount }) {
-  const { globalColor, setGlobalColor } = useContext(ThemeContext);
+function Counter({ setGlobalCount }) {
+  const {
+    themeStore: { colors },
+  } = useStores();
+
   const [count, setCount] = useState(10);
+
   useEffect(() => {
     console.log("BORN");
     return () => {
@@ -12,14 +17,15 @@ function Counter({ color, setGlobalCount }) {
   }, []);
 
   return (
-    <div style={{ color, backgroundColor: globalColor }}>
+    <div
+      style={{ color: colors.foreground, backgroundColor: colors.background }}
+    >
       Count: {count}
       <br />
       <button
         onClick={() => {
           setCount(count + 1);
           setGlobalCount();
-          setGlobalColor(color);
         }}
       >
         Increment
