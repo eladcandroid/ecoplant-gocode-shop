@@ -1,17 +1,8 @@
 import { action, computed, makeObservable, observable, reaction } from "mobx";
 
-const COLORS = {
-  light: {
-    foreground: "#000000",
-    background: "#eeeeee",
-  },
-  dark: {
-    foreground: "#ffffff",
-    background: "#222222",
-  },
-};
+import COLORS from "./COLORS";
 
-class ThemeStore {
+export class ThemeStore {
   @observable
   isDark = false;
 

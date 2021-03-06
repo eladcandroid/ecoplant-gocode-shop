@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useStores } from "../hooks/use-stores";
+import { observer } from "mobx-react";
 
 function Counter({ setGlobalCount }) {
   const {
@@ -8,15 +9,9 @@ function Counter({ setGlobalCount }) {
 
   const [count, setCount] = useState(10);
 
-  useEffect(() => {
-    console.log("BORN");
-    return () => {
-      console.log("DIED");
-    };
-  }, []);
-
   return (
     <div
+      data-testid="container"
       style={{ color: colors.foreground, backgroundColor: colors.background }}
     >
       Count: {count}
@@ -33,4 +28,4 @@ function Counter({ setGlobalCount }) {
   );
 }
 
-export default Counter;
+export default observer(Counter);
