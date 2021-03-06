@@ -14,7 +14,6 @@ const initialCounters = [
 function App() {
   const [counters, setCounters] = useState(initialCounters);
   const [globalCount, setGlobalCount] = useState(counters.length * 10);
-  const [counterColor, setCounterColor] = useState("purple");
   const input = useRef(null);
 
   const {
@@ -36,18 +35,8 @@ function App() {
 
   return (
     <div>
-      Button Color:
-      <input
-        ref={input}
-        type="text"
-        value={counterColor}
-        onChange={(e) => setCounterColor(e.target.value)}
-      />
-      <br />
       <button
-        onClick={() =>
-          setCounters([{ id: 4, color: counterColor }, ...counters])
-        }
+        onClick={() => setCounters([{ id: counters.length + 1 }, ...counters])}
       >
         Add Counter
       </button>

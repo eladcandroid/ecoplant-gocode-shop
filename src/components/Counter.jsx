@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useStores } from "../hooks/use-stores";
-import { observer } from "mobx-react";
 
 function Counter({ setGlobalCount }) {
   const {
